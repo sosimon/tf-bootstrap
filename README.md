@@ -20,3 +20,10 @@ BUCKET_NAME=simon-tf-state-cicd-dev
 gsutil mb gs://${BUCKET_NAME}/
 gsutil iam ch serviceAccount:${SA_EMAIL}:roles/storage.admin gs://${BUCKET_NAME}/
 ```
+
+## Set GOOGLE_APPLICATION_CREDENTIALS
+
+```
+gcloud iam service-accounts keys create credentials.json --iam-account=${SA_EMAIL}
+export GOOGLE_APPLICATION_CREDENTIALS="$(pwd)/credentials.json"
+```
