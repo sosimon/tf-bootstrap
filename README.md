@@ -6,9 +6,12 @@
 
 ```
 SA_NAME=simon-cicd-terraform-dev
+PROJECT_ID=<project_id>
 gcloud iam service-accounts create ${SA_NAME} --display-name "Terraform Service Account Dev"
 SA_EMAIL=$(gcloud iam service-accounts list --filter=name~${SA_NAME} --format=json | jq -r '.[0].email')
-gcloud iam service-accounts add-iam-policy-binding ${SA_EMAIL} --member="serviceAccount:${SA_EMAIL}" --role='roles/editor'
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+  --member serviceAccount:${SA_EMAIL} \
+  --role roles/editor
 ```
 
 ## Create state bucket(s)
