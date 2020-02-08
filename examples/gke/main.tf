@@ -47,7 +47,7 @@ resource "google_container_node_pool" "primary_nodes" {
   name       = "node-pool-1"
   location   = "us-central1"
   cluster    = google_container_cluster.primary.name
-  node_count = 2
+  node_count = 1
 
   node_config {
     machine_type = "n1-standard-1"
